@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1><b>Ajouter un Pokemon</b></h1>
+    <form method="post" action="{% url 'PokeAdd' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="type">Type:</label>
+        <input type="text" name="type" required><br>
+
+        <label for="lvl">Lvl:</label>
+        <input type="number" name="lvl" required><br>
+
+        <input type="submit" value="Ajouter">
+    </form>
+    <h1><b>Liste de pokemons:</b></h1>
+    <ul>
+    {% for pokemon in pokemons %}
+        <li>{{ pokemon.name }} ({{ pokemon.type }}) {{ pokemon.lvl }}</li>
+    {% endfor %}
+    </ul>
+{% endblock content %} 
